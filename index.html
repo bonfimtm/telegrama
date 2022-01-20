@@ -7,5 +7,25 @@
   </head>
   <body>
     <h1>Telegrama</h1>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+      // Initialize Cloud Firestore through Firebase
+      firebase.initializeApp({
+        apiKey: "AIzaSyAyTLTqMuDSaf4DnrPK-pYJe4f29h0g-lk",
+        authDomain: "telegrama-91b14.firebaseapp.com",
+        projectId: "telegrama-91b14",
+      });
+
+      var db = firebase.firestore();
+
+      db.collection("mensagens")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id, doc.data());
+          });
+        });
+    </script>
   </body>
 </html>
