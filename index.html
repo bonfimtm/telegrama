@@ -7,6 +7,7 @@
   </head>
   <body>
     <h1>Telegrama</h1>
+    <div id="mensagens"></div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script>
@@ -19,13 +20,15 @@
 
       var db = firebase.firestore();
 
-      db.collection("mensagens")
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id, doc.data());
-          });
+      db.collection("mensagens").onSnapshot((querySnapshot) => {
+        document.querySelector("#mensagens").replaceChildren();
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, doc.data());
+          document
+            .querySelector("#mensagens")
+            .append(doc.data().conteudo, document.createElement("p"));
         });
+      });
     </script>
   </body>
 </html>
