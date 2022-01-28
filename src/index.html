@@ -2,13 +2,16 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Telegrama</title>
   </head>
   <body>
     <h1>Telegrama 📯</h1>
     <form onsubmit="enviarMensagem(event)">
-      <input type="text" id="conteudo" placeholder="Mensagem"/>
+      <input type="text" id="conteudo" placeholder="Mensagem" />
       <button type="submit">Enviar</button>
     </form>
     <div id="mensagens"></div>
@@ -27,11 +30,13 @@
       db.collection("mensagens")
         .orderBy("criacao", "desc")
         .onSnapshot((querySnapshot) => {
-          document.querySelector("#mensagens").replaceChildren();
+          const mensagensElm = document.querySelector("#mensagens");
+          mensagensElm.replaceChildren();
           querySnapshot.forEach((doc) => {
-            document
-              .querySelector("#mensagens")
-              .append(doc.data().conteudo, document.createElement("p"));
+            const pElm = document.createElement("p");
+            const textElm = document.createTextNode(doc.data().conteudo);
+            pElm.appendChild(textElm);
+            mensagensElm.appendChild(pElm);
           });
         });
 
