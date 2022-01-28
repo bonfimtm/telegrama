@@ -4,7 +4,7 @@
   "description": "Site para troca de mensagens em grupo",
   "scripts": {
     "start": "serve src",
-    "build": "cp index.html public",
+    "build": "cp src/index.html public",
     "deploy": "firebase deploy --only hosting"
   },
   "repository": {
