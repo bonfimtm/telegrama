@@ -1,0 +1,21 @@
+{
+  "name": "telegrama",
+  "version": "1.0.0",
+  "description": "Site para troca de mensagens em grupo",
+  "scripts": {
+    "start": "serve src",
+    "build": "cp index.html public",
+    "deploy": "firebase deploy --only hosting"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonfimtm/telegrama.git"
+  },
+  "keywords": [],
+  "author": "Thiago Bonfim",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bonfimtm/telegrama/issues"
+  },
+  "homepage": "https://github.com/bonfimtm/telegrama#readme"
+}
