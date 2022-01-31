@@ -16,19 +16,23 @@ db.collection("mensagens")
     mensagensElm.replaceChildren();
     querySnapshot.forEach((doc) => {
       const pElm = document.createElement("p");
-      const textElm = document.createTextNode(doc.data().conteudo);
-      pElm.appendChild(textElm);
+      const nome = doc.data().nome ?? "";
+      const textElmNome = document.createTextNode(`${nome}: `);
+      const textElmConteudo = document.createTextNode(doc.data().conteudo);
+      pElm.appendChild(textElmNome);
+      pElm.appendChild(textElmConteudo);
       mensagensElm.appendChild(pElm);
     });
   });
 
 function enviarMensagem(event) {
   event.preventDefault();
+  const nome = document.querySelector("#nome").value;
   const conteudo = document.querySelector("#conteudo").value;
   const criacao = new Date();
   if (conteudo) {
     db.collection("mensagens")
-      .add({ conteudo, criacao })
+      .add({ nome, conteudo, criacao })
       .catch((error) => {
         console.error("Error adding document: ", error);
       })
