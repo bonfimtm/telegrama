@@ -7,7 +7,7 @@ firebase.initializeApp({
   projectId: "telegrama-91b14",
 });
 
-var db = firebase.firestore();
+const db = firebase.firestore();
 
 db.collection("mensagens")
   .orderBy("criacao", "desc")
@@ -24,8 +24,8 @@ db.collection("mensagens")
 
 function enviarMensagem(event) {
   event.preventDefault();
-  let conteudo = document.querySelector("#conteudo").value;
-  let criacao = new Date();
+  const conteudo = document.querySelector("#conteudo").value;
+  const criacao = new Date();
   if (conteudo) {
     db.collection("mensagens")
       .add({ conteudo, criacao })
