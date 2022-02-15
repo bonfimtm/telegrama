@@ -4,7 +4,7 @@
   "description": "Site para troca de mensagens em grupo",
   "scripts": {
     "start": "lite-server",
-    "build": "cp src/index.html public",
+    "build": "cp src/* public",
     "deploy": "firebase deploy --only hosting"
   },
   "engines": {
